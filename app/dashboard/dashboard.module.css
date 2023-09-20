@@ -1,0 +1,95 @@
+.posts {
+    margin-left: -80px;
+    overflow-y: scroll;
+    max-height: 550px;
+    margin-top: -200px;
+}
+
+.posts::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+.delete {
+    height: 200px;
+    min-width: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 0 4px 4px 0;
+    transition: .2s ease-in-out;
+
+    cursor: pointer;
+    background-color: #b91c1c;
+}
+
+.delete:hover {
+    background-color: #a21d1d;
+}
+
+.delete img {
+    filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(30%) hue-rotate(195deg) brightness(106%) contrast(101%);
+}
+
+.new {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+
+    margin-top: -120px;
+
+    gap: 15px;
+    padding-left: 130px;
+}
+
+.input,
+.inputDesc {
+    width: 340px;
+    height: 50px;
+
+    padding: 10px;
+
+    outline: none;
+    border-bottom: 1px solid gray;
+    background-color: transparent;
+
+    transition: .2s ease-in-out;
+}
+
+.inputDesc {
+    height: 100px;
+    resize: none;
+
+}
+
+.input:focus,
+.textArea:focus,
+.inputDesc:focus {
+    border: 1px solid #62a21f;
+    border-radius: 4px;
+}
+
+.textArea {
+    width: 340px;
+    height: 150px;
+
+    padding: 10px;
+
+    outline: none;
+    border-bottom: 1px solid gray;
+    background-color: transparent;
+
+    transition: .2s ease-in-out;
+    resize: none;
+}
+
+.counter {
+    display: flex;
+    justify-content: right;
+    width: 330px;
+
+    color: #888888;
+}

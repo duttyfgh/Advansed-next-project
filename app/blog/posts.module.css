@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  align-items: center;
+
+  gap: 50px;
+  margin-bottom: 50px;
+
+  border: 1px solid grey;
+  border-radius: 12px;
+
+  transition: .2s ease-in-out;
+}
+
+.container:hover {
+  border: 1.5px solid #62a21f;
+
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 12px 0 0 12px;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.desc {
+  font-size: 18px;
+  color: #999;
+}

@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#my-favicon {
+  border-radius: 50%;
+  display: none;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.links a:hover {
+  color: #62a21f;
+}
+
+.icon {
+  filter: brightness(0) saturate(100%) invert(46%) sepia(72%) saturate(476%) hue-rotate(47deg) brightness(103%) contrast(90%);
+}
+
+.icon:hover {
+  filter: brightness(0) saturate(100%) invert(46%) sepia(72%) saturate(476%) hue-rotate(47deg) brightness(103%) contrast(90%) brightness(80%);
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.title {
+  font-size: 72px;
+  color: #62a21f;
+}
+
+.img {
+  height: 500px;
+  width: 100%;
+  animation: move 3s infinite ease alternate;
+}
+
+@keyframes move {
+  form {
+    transform: translateY(-10px);
+  }
+
+  to {
+    transform: translateY(10px);
+  }
+}
+
+.container {
+  max-width: 1366px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.theme {
+  transition: 1s all ease;
+}
+
+.light {
+  background-color: white;
+  color: #111;
+}
+
+.light .headerImage {
+  filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(30%) hue-rotate(195deg) brightness(106%) contrast(101%);
+  transition: 1s all ease;
+}
+
+.dark {
+  background-color: #111;
+  color: #bbb;
+}
+
+.dark .headerImage {
+  filter: brightness(0) saturate(100%)
+}
+
+.notFoundBorder {
+  border: 1px solid #b91c1c;
+  border-radius: 8px;
+  transition: .2s ease-in-out;
+}
+
+.notFoundBorder:hover {
+  border: 1px solid #fff;
+  background: #b91c1c;
+  color: #fff;
+}
+
+.dark .notFoundBorder:hover {
+  border: 1px solid #b91c1c;
+  background: #b91c1c;
+  color: #fff;
+}
+
+.eye {
+  position: absolute;
+  width: 30px;
+  right: 10px;
+  top: 50px;
+  z-index: 999999;
+
+  cursor: pointer;
+}
+
+.light .eye {
+  filter: brightness(0) saturate(100%);
+  transition: 1s all ease;
+}
+
+.dark .eye {
+  filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(30%) hue-rotate(195deg) brightness(106%) contrast(101%);
+}
+
+.light .mainInput input {
+  color: #4b4b4b;
+}
+
+.dark .mainInput input {
+  color: #b1b1b1;
+}
+
+/* Скрыть фон скроллбара и установить цвет бордера и бара */
+::-webkit-scrollbar {
+  width: 8px; /* Ширина скроллбара */
+  background-color: transparent; /* Прозрачный фон */
+}
+
+/* Стиль для полосы скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: #62a21f; /* Цвет скроллбара */
+  border-radius: 8px; /* Радиус границы */
+}
+
+/* Стиль для трека скроллбара (задний фон) */
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Прозрачный фон трека */
+}
