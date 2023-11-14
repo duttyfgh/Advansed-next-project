@@ -21,12 +21,18 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   const [mode, setMode] = useState<string>(() => {
 
-    const storedMode = localStorage.getItem('theme');
+    let storedMode
+    if (typeof localStorage !== 'undefined') {
+      storedMode = localStorage.getItem('theme')
+    }
+
     return storedMode || 'light' //default value
   })
 
   useEffect(() => {
-    localStorage.setItem('theme', mode);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('theme', mode)
+    }
   }, [mode])
 
   const toggle = () => {

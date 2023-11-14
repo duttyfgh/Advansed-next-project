@@ -158,7 +158,7 @@ const Register = () => {
         </Formik>
 
 
-        {error && <span className='text-red'>Something went wrong!</span>}
+        {error as boolean && <span className='text-red'>Something went wrong!</span>}
         <div className='flex justify-center mt-[10px] text-[#656565]'>
           <span>Already have an account?</span>
           <Link className={'hover:underline text-[#486924] ml-[5px]'} href="/dashboard/login" title='Go to login'>

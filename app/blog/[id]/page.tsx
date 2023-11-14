@@ -1,7 +1,5 @@
 import { post } from '@/modules/modules'
-import capitalizeFirstLetter from '@/utils/capitalizeFirstLatter'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 import styles from './id.module.css'
 
