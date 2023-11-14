@@ -10,7 +10,7 @@ interface IBlogIDProps {
 }
 
 const getData = async (id: string) => {
-  const response = await fetch(`http://localhost:3000/api/posts/${id}`, { cache: 'no-store' })
+  const response = await fetch(`https://nextapp-one-puce.vercel.app/api/posts/${id}`, { cache: 'no-store' })
 
   const data: post = await response.json()
   return data
