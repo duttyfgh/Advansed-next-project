@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 #my-favicon {
   border-radius: 50%;
@@ -40,12 +43,15 @@ a {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 50px;
 }
 
 .title {
+  color: #62A21F;
+  font-family: 'Koulen', sans-serif;
   font-size: 72px;
-  color: #62a21f;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 80px;
 }
 
 .img {
@@ -144,17 +150,22 @@ a {
 
 /* Скрыть фон скроллбара и установить цвет бордера и бара */
 ::-webkit-scrollbar {
-  width: 8px; /* Ширина скроллбара */
-  background-color: transparent; /* Прозрачный фон */
+  width: 8px;
+  /* Ширина скроллбара */
+  background-color: transparent;
+  /* Прозрачный фон */
 }
 
 /* Стиль для полосы скроллбара */
 ::-webkit-scrollbar-thumb {
-  background-color: #62a21f; /* Цвет скроллбара */
-  border-radius: 8px; /* Радиус границы */
+  background-color: #62a21f;
+  /* Цвет скроллбара */
+  border-radius: 8px;
+  /* Радиус границы */
 }
 
 /* Стиль для трека скроллбара (задний фон) */
 ::-webkit-scrollbar-track {
-  background-color: transparent; /* Прозрачный фон трека */
+  background-color: transparent;
+  /* Прозрачный фон трека */
 }
