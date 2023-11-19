@@ -1,0 +1,106 @@
+.main {
+    display: flex;
+    align-items: start;
+    gap: 70px;
+}
+
+.item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainTextShell {
+    width: 496px;
+}
+
+.title {
+    color: #62A21F;
+    font-family: 'Koulen', sans-serif;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 80px;
+}
+
+.img {
+    height: 400px;
+    width: auto;
+    animation: move 3s infinite ease alternate;
+    object-fit: contain;
+    border-radius: 5px;
+
+}
+
+.secondText {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.button {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+
+    max-width: max-content;
+
+    background-color: #62A21F;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #52871a;
+}
+
+@keyframes move {
+    form {
+        transform: translateY(-10px);
+    }
+
+    to {
+        transform: translateY(10px);
+    }
+}
+
+@media(max-width: 1060px) {
+    .main {
+        flex-direction: column-reverse;
+        gap: 50px;
+    }
+
+    .mainTextShell {
+        max-width: 700px;
+        width: auto;
+    }
+
+    .img {
+        object-fit: cover;
+    }
+}
+
+@media(max-width: 600px) {
+    .img {
+        max-height: 400px;
+        height: auto;
+    }
+
+    .title {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .secondText {
+        font-size: 18px;
+        line-height: 27px
+    }
+
+    .button {
+        max-width: none;
+        width: 100%;
+    }
+}

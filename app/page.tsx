@@ -1,26 +1,27 @@
-import Button from "@/components/Button"
 import Image from "next/image"
 import Hero from '@/public/hero.png'
 import { generateMetadata } from "./layout"
+import cls from './Page.module.css'
+import Link from "next/link"
 
 export const metadata = generateMetadata('Home')
 
 const Home = () => {
   return (
-    <main className="flex items-center gap-[100px]">
-      <div className="item">
-        <div className='w-[496px]'>
-          <h1 className="title">
+    <main className={cls.main}>
+      <div className={cls.item}>
+        <div className={cls.mainTextShell}>
+          <h1 className={cls.title}>
             The Future of AI in the next few years
           </h1>
         </div>
-        <p className='text-[24px] text-weight-[300] mb-[30px]'>
+        <p className={cls.secondText}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, mollitia. Lorem, ipsum dolor.
         </p>
-        <Button title='Portfolio' text="See Our Works" url="/portfolio" />
+        <Link href="/portfolio" title='Portfolio' className={cls.button}>See Our Works</Link>
       </div>
-      <div className="item">
-        <Image src={Hero} alt='Ai' className='object-contain img'/>
+      <div className='flex justify-start items-start w-[100%] flex-1'>
+        <Image src={Hero} alt='Ai' className={cls.img}/>
       </div>
     </main>
   )

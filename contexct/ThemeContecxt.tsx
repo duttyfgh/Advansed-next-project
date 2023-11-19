@@ -26,7 +26,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       storedMode = localStorage.getItem('theme')
     }
 
-    return storedMode || 'light' //default value
+    return storedMode || 'dark' //default value
   })
 
   useEffect(() => {
