@@ -8,7 +8,7 @@ import cls from './Header.module.css'
 
 const Header = () => {
   const session = useSession()
-  const [isDropdown, setIsDropdown] = useState<boolean>(true)
+  const [isDropdown, setIsDropdown] = useState<boolean>(false)
 
   const closeDropdown = () => {
     setIsDropdown(false)
