@@ -43,32 +43,29 @@
 }
 
 .email,
-.password,
-.login {
+.password {
     margin-bottom: 20px;
+
 }
 
 .email input,
-.password input,
-.login input {
+.password input {
     padding: 8px;
-    margin-top: 5px;
     margin-bottom: 5px;
+    border-bottom: 1px solid #d6d9ee;
+    border-radius: 4px;
 
     width: 400px;
 
     font-size: 20px;
 
     background: transparent;
-    border-bottom: 1px solid #d6d9ee;
     outline: 0;
     transition: .2s ease-in-out;
-    border-radius: 4px;
 }
 
 .email input:focus,
-.password input:focus,
-.login input:focus {
+.password input:focus {
     border: 1px solid #62a21f;
 
 }
@@ -81,7 +78,7 @@
 
 .text {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     flex-direction: column;
     margin-bottom: 30px;
@@ -95,9 +92,10 @@
 .or {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     width: 100%;
-    margin: 15px;
+    margin-bottom: 15px;
 }
 
 .or p {
@@ -105,26 +103,19 @@
     align-items: center;
     justify-content: center;
     color: #656565;
-
-}
-
-.or p::after {
-    display: block;
-    content: '';
-    height: 1px;
-    width: 160px;
-    background-color: #62a21f;
-    margin-left: 15px;
-}
-
-.or p::before {
-    display: block;
-    content: '';
-    height: 1px;
-    width: 160px;
-    background-color: #62a21f;
     margin-right: 15px;
+    margin-left: 15px;
+
 }
+
+.line {
+    display: block;
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: #62a21f;
+}
+
 
 .googleLogin {
     display: flex;
@@ -142,4 +133,101 @@
     gap: 10px;
 
     color: #404040;
+}
+
+.eye {
+    position: absolute;
+    right: 10px;
+    top: 47px;
+    z-index: 999999;
+
+    cursor: pointer;
+}
+
+.mainText {
+    font-size: 34px;
+    font-family: 'Koulen', sans-serif;
+    line-height: 38px;
+
+}
+
+.email input::placeholder,
+.password input::placeholder {
+    color: #b2bda7;
+}
+
+.alreadyHaveAccount {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    color: #656565;
+}
+
+.registerLink {
+    color: #486924;
+    margin-left: 5px;
+}
+
+.registerLink:hover {
+    text-decoration: underline;
+}
+
+@media(max-width: 600px) {
+    .shell {
+        width: auto;
+        padding: 34px;
+        padding-top: 50px;
+    }
+
+    .email input,
+    .password input,
+    .button,
+    .googleLogin {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .email input::placeholder,
+    .password input::placeholder {
+        font-size: 18px;
+    }
+
+}
+
+@media(max-width: 400px) {
+    .shell {
+        padding: 20px;
+        padding-top: 50px;
+        border-radius: 20px;
+    }
+
+    .email input::placeholder,
+    .password input::placeholder {
+        font-size: 15px;
+    }
+
+    .email input,
+    .password input {
+        font-size: 17px;
+    }
+
+    .mainText {
+        font-size: 28px;
+    }
+
+    .alreadyHaveAccount {
+        flex-direction: column;
+    }
+
+    .registerLink {
+        margin-left: 0;
+    }
+
+    .googleLogin {
+        font-size: 15px
+    }
+
+    .eye {
+        top: 39px;
+    }
 }

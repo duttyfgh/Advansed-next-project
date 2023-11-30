@@ -35,7 +35,7 @@ const Header = () => {
 
         {session.status == 'authenticated'
           ? <div className='flex items-center justify-between'>
-            <Link className='font-bold mr-4 ml-4' title='Click to visit your account' href='/dashboard'>
+            <Link className='font-bold mr-4' title='Click to visit your account' href='/dashboard'>
               {session?.data?.user?.name}</Link>
             <button
               className='p-[5px] bg-[#62a21f] text-white cursor-pointer rounded-[8px] hover:bg-[#548b1a]'
@@ -80,18 +80,18 @@ const Header = () => {
             isDropdown && <div className={cls.dropdown}>
               <div className='relative'>
                 <div className={cls.dropdownLinks}>
-                  <Link title='About' href='/about' className={cls.linkItem}>
-                    <Image width={24} height={24} src={'/about.png'} alt='...'/>
+                  <Link title='About' href='/about' className={cls.linkItem} onClick={closeDropdown}>
+                    <Image width={24} height={24} src={'/about.png'} alt='...' />
                     <span>About</span>
                   </Link>
                   <div className={cls.line}></div>
-                  <Link title='Portfolio' href='/portfolio' className={cls.linkItem}>
-                    <Image width={24} height={24} src={'/portfolio.png'} alt='...'/>
+                  <Link title='Portfolio' href='/portfolio' className={cls.linkItem} onClick={closeDropdown}>
+                    <Image width={24} height={24} src={'/portfolio.png'} alt='...' />
                     <span>Portfolio</span>
                   </Link>
                   <div className={cls.line}></div>
-                  <Link title='Posts' href='/blog' className={cls.linkItem}>
-                    <Image width={24} height={24} src={'/posts.png'} alt='...'/>
+                  <Link title='Posts' href='/blog' className={cls.linkItem} onClick={closeDropdown}>
+                    <Image width={24} height={24} src={'/posts.png'} alt='...' />
                     <span>Posts</span>
                   </Link>
                 </div>

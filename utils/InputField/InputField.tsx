@@ -28,7 +28,7 @@ const InputField = ({
 }: InputFieldProps) => {
     return (
         <>
-            <p className='text-[22px]'>{text}</p>
+            <p className={styles.text}>{text}</p>
             <div className='mainInput'>
                 <input
                     className={error && touched && error ? styles.inputError : ''}

@@ -58,12 +58,18 @@
     width: 400px;
 
     font-size: 20px;
-    
+
     background: transparent;
     border-bottom: 1px solid #d6d9ee;
     outline: 0;
     transition: .2s ease-in-out;
     border-radius: 4px;
+}
+
+.email input::placeholder,
+.password input::placeholder,
+.login input::placeholder {
+    color: #b2bda7;
 }
 
 .email input:focus,
@@ -91,3 +97,100 @@
 .text h2 {
     color: #656565;
 }
+
+.eye {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    z-index: 999999;
+
+    cursor: pointer;
+}
+
+.mainText {
+    font-size: 34px;
+    font-family: 'Koulen', sans-serif;
+
+}
+
+.alreadyHaveAccount {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    color: #656565;
+}
+
+.loginLink {
+    color: #486924;
+    margin-left: 5px;
+}
+
+.loginLink:hover {
+    text-decoration: underline;
+}
+
+@media(max-width: 600px) {
+    .shell {
+        width: auto;
+        padding: 34px;
+        padding-top: 50px;
+    }
+
+    .email input,
+    .password input,
+    .login input,
+    .button {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .email input::placeholder,
+    .password input::placeholder,
+    .login input::placeholder {
+        font-size: 18px;
+    }
+
+    .mainText {
+        font-size: 28px;
+    }
+}
+
+
+@media(max-width: 400px) {
+    .shell {
+        padding: 20px;
+        padding-top: 50px;
+        border-radius: 20px;
+
+    }
+
+    .email input::placeholder,
+    .password input::placeholder,
+    .login input::placeholder {
+        font-size: 15px;
+    }
+
+    .email input,
+    .password input,
+    .login input {
+        font-size: 17px;
+    }
+
+    .mainText {
+        font-size: 28px;
+    }
+
+    .alreadyHaveAccount {
+        flex-direction: column;
+    }
+
+    .loginLink {
+        margin-left: 0;
+    }
+
+    .eye {
+        top: 42px;
+    }
+
+}
+

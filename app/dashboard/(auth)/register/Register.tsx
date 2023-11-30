@@ -69,7 +69,7 @@ const Register = () => {
       {/*@ts-ignore - непонимаю как решить*/}
       <div className={styles.shell}>
         <div className={styles.text}>
-          <h1 className='text-[34px]'>Create an Account</h1>
+          <h1 className={styles.mainText}>Create an Account</h1>
           <h2 className={styles.subtitle}>Please sign up to see the dashboard.</h2>
         </div>
 
@@ -91,7 +91,7 @@ const Register = () => {
                   error={errors.Login as string}
                   touched={touched.Login as boolean}
                   type={'text'}
-                  placeholder={'username'}
+                  placeholder={'Enter your username...'}
                   name={'Login'}
                   onChange={handleChange}
                   value={values.Login}
@@ -104,7 +104,7 @@ const Register = () => {
                   error={errors.Email as string}
                   touched={touched.Email as boolean}
                   type={'email'}
-                  placeholder={'username@gmail.com'}
+                  placeholder={'Enter your email...'}
                   name={'Email'}
                   onChange={handleChange}
                   value={values.Email}
@@ -117,7 +117,7 @@ const Register = () => {
                   error={errors.Password as string}
                   touched={touched.Password as boolean}
                   type={isPasswordEye ? 'text' : 'password'}
-                  placeholder={'******'}
+                  placeholder={'Enter your password...'}
                   name={'Password'}
                   onChange={handleChange}
                   value={values.Password}
@@ -125,21 +125,21 @@ const Register = () => {
                    />
                 {isPasswordEye
                   ? <Image
-                    className='eye'
+                    className={`${styles.eye} defaultVector`}
                     onClick={() => setIsPasswordEye(false)}
                     alt='eye'
                     src={'/eye.png'}
-                    width={30}
-                    height={30}
+                    width={24}
+                    height={24}
                     title='Hide password'
                   />
                   : <Image
-                    className='eye'
+                    className={`${styles.eye} defaultVector`}
                     onClick={() => setIsPasswordEye(true)}
                     alt='eyeSlash'
                     src={'/eye-slash.png'}
-                    width={30}
-                    height={30}
+                    width={24}
+                    height={24}
                     title='Show password'
                   />
                 }
@@ -159,9 +159,9 @@ const Register = () => {
 
 
         {error as boolean && <span className='text-red'>Something went wrong!</span>}
-        <div className='flex justify-center mt-[10px] text-[#656565]'>
+        <div className={styles.alreadyHaveAccount}>
           <span>Already have an account?</span>
-          <Link className={'hover:underline text-[#486924] ml-[5px]'} href="/dashboard/login" title='Go to login'>
+          <Link className={styles.loginLink} href="/dashboard/login" title='Go to login'>
             Login
           </Link>
         </div>

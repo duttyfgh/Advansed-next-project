@@ -13,9 +13,19 @@ body .inputError:focus {
     border: 1px solid red;
 }
 
+.text {
+    font-size: 22px;
+}
+
 @media(max-width: 1100px) {
     .error {
         max-width: 300px;
 
+    }
+}
+
+@media(max-width: 400px) {
+    .text {
+        font-size: 17px;
     }
 }

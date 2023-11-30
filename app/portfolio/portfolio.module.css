@@ -1,16 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 
-.mainTitle {
-  font-size: 100px;
+.portfolio {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.selectTitle {
+.mainTitle {
+  font-family: Koulen;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 45px;
   margin: 20px 0px;
-  font-size: 30px;
 }
 
 .items {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 50px;
+  flex-wrap: wrap;
+
 }
 
 .item {

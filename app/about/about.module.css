@@ -37,3 +37,39 @@
   font-weight: 600;
 
 }
+
+@media(max-width: 991px) {
+  .imgContainer {
+    height: 300px;
+  }
+
+  .textContainer {
+    flex-direction: column;
+  }
+
+  .imgText {
+    padding: 10px 15px;
+
+  }
+
+}
+
+@media(max-width: 500px) {
+  .imgContainer {
+    height: 200px;
+  }
+
+  .imgText {
+    padding: 10px 15px;
+
+  }
+
+  .imgText h1 {
+    font-size: 17px;
+  }
+
+  .imgText h2 {
+    font-size: 15px;
+  }
+
+}

@@ -1,7 +1,7 @@
 import { post } from '@/modules/modules'
 import Image from 'next/image'
 import React from 'react'
-import styles from './id.module.css'
+import cls from './id.module.css'
 
 interface IBlogIDProps {
   params: {
@@ -28,30 +28,37 @@ const BlogID = async ({ params }: IBlogIDProps) => {
   const data = await getData(params.id)
 
   const [date, time] = data.createdAt.split("T")
-
   const formattedDate = date.replace(/-/g, '.')
+
   return (
-    <div className='flex items-center flex-col'>
-      <span className='w-[100%] text-[30px] text-center'>{data.title}</span>
-      <p>{data.desc}</p>
-      <div className='flex items-center w-[1000px] justify-between mt-[120px]'>
-        <Image className='rounded-[8px]' src={data.img} alt='...' width={440} height={440} />
-        <div>
-          <p className='text-[20px] max-w-[460px] p-[20px]'>{data.content}</p>
-          <div className={styles.user} title={`" ${data.username} " create the post`}>
-            <div className='flex items-center' >
-              <Image src={data.img} alt='...' width={60} height={60} className='resize-none text-[20px] rounded-[50%]' />
-              <span className='font-bold text-[20px] ml-[10px]'>{data.username}</span>
-            </div>
-            <div className='flex items-center justify-center flex-col'>
-              <p className='font-bold text-[18px] mr-4'>Time of creation</p>
-              <span className='text-[16px]'>{time.slice(0, 5)} {formattedDate}</span>
-            </div>
+    <main className={cls.main}>
+      <div className='w-[100%]'>
+        <span className={cls.title}>{data.title}</span>
+        <p className={cls.description}>{data.desc}</p>
+
+        <p className={cls.content}>{data.content}</p>
+        <div className={cls.mobileDataTime}>
+          <span className='font-bold '>{data.username}</span>
+          <div className='gap-[10px] flex'>
+            <span>Posted at:</span>
+            <span className='font-bold'>{formattedDate}</span>
           </div>
         </div>
       </div>
 
-    </div>
+      <div className={cls.secondBlock}>
+        <div>
+          <Image src={data.img} width={350} height={350} alt={data.title} className='rounded-[4px]' />
+        </div>
+        <div className={cls.dataTime}>
+          <span className='font-bold '>{data.username}</span>
+          <div className='gap-[10px] flex'>
+            <span>Posted at:</span>
+            <span className='font-bold'>{formattedDate}</span>
+          </div>
+        </div>
+      </div>
+    </main>
   )
 }
 

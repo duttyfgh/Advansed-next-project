@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className='h-[50px] text-[14px] flex items-center justify-evenly'>
+    <footer className='h-[50px] text-[14px] flex items-center justify-evenly mb-[10px]'>
       <div>2023 &copy; MyApp. All rights reserved</div>
       <div className='flex items-center gap-[10px]'>
         <a href="https://github.com/duttyfgh" target='_blank'>

@@ -6,8 +6,8 @@ export const metadata = generateMetadata('Portfolio')
 
 const Portfolio = () => {
   return (
-    <div className='pl-[120px]'>
-    <h1 className={styles.selectTitle}>Choose a gallery</h1>
+    <div className={styles.portfolio}>
+    <h1 className={styles.mainTitle}>Choose a gallery</h1>
     <div className={styles.items}>
       <Link href="/portfolio/illustrations" className={styles.item}>
         <span className={styles.title}>Illustrations</span>

@@ -1,43 +1,61 @@
+/*62a21f*/
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 
-.catTitle {
-  color: #62a21f;
-  font-size: 30px;
 
-}
-
-.item{
+.container {
   display: flex;
-  gap: 50px;
-  margin-top: 50px;
-  margin-bottom: 100px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.item:nth-child(2n+1){
-  flex-direction: row-reverse;
+.mainTitle {
+  font-family: Koulen;
+  font-size: 35px;
 }
 
-.imgContainer{
-  flex:1;
-  height: 500px;
-  position: relative;
+.item {
+  display: flex;
+  margin-bottom: 40px;
+  gap: 20px;
 }
 
-.img{
-  object-fit: cover;
+.img {
+  border-radius: 4px;
 }
 
-.content{
-  flex:1;
+.title {
+  font-family: Koulen;
+  font-size: 30px;
+}
+
+.textShell {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  justify-content: center;
+  justify-content: end;
 }
 
-.title{
-  font-size: 50px;
+.description {
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
-.desc{
-  font-size: 20px;
+.category {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #c6c6c6;
+  margin-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+@media(max-width: 910px) {
+  .item {
+    flex-direction: column;
+  }
+
+  .img {
+    width: 300px;
+  }
 }
