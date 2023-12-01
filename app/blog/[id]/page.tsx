@@ -34,7 +34,7 @@ const BlogID = async ({ params }: IBlogIDProps) => {
   return (
     <main className={cls.main}>
       <div className='w-[100%]'>
-        <Link href='/blog'>
+        <Link href='/blog' className={cls.arrowForDesk}>
           <Image src='/arrow.png' width={40} height={30} alt='<--' title='<- Come back' className={`${cls.arrow} defaultVector`} />
         </Link>
         <span className={cls.title}>{data.title}</span>
@@ -51,9 +51,10 @@ const BlogID = async ({ params }: IBlogIDProps) => {
       </div>
 
       <div className={cls.secondBlock}>
-        <div>
-          <Image src={data.img} width={350} height={350} alt={data.title} className='rounded-[4px]' />
-        </div>
+        <Link href='/blog' className={cls.arrowForMobile}>
+          <Image src='/arrow.png' width={40} height={30} alt='<--' title='<- Come back' className={`${cls.arrow} defaultVector`} />
+        </Link>
+        <Image src={data.img} width={350} height={350} alt={data.title} className='rounded-[4px]' />
         <div className={cls.dataTime}>
           <span className='font-bold '>{data.username}</span>
           <div className='gap-[10px] flex'>

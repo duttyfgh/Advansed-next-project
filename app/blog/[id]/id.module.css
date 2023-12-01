@@ -44,14 +44,26 @@
   margin-bottom: 40px;
 }
 
+.arrowForMobile {
+  display: none;
+}
+
 @media(max-width: 1024px) {
   .main {
     flex-direction: column-reverse;
     gap: 0;
   }
 
+  .arrowForMobile {
+    display: block;
+  }
+
   .arrow {
     margin-bottom: 20px;
+  }
+
+  .arrowForDesk {
+    display: none;
   }
 
   .dataTime {
