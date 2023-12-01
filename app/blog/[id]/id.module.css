@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 40px;
 }
 
 .title {
@@ -23,6 +24,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  max-width: 400px;
 }
 
 .secondBlock {
@@ -33,9 +35,23 @@
   font-size: 20px;
 }
 
+.mobileDataTime {
+  display: none;
+  max-width: 400px;
+}
+
+.arrow {
+  margin-bottom: 40px;
+}
+
 @media(max-width: 1024px) {
   .main {
     flex-direction: column-reverse;
+    gap: 0;
+  }
+
+  .arrow {
+    margin-bottom: 20px;
   }
 
   .dataTime {

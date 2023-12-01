@@ -35,13 +35,12 @@ const Header = () => {
 
         {session.status == 'authenticated'
           ? <div className='flex items-center justify-between'>
-            <Link className='font-bold mr-4' title='Click to visit your account' href='/dashboard'>
-              {session?.data?.user?.name}</Link>
-            <button
-              className='p-[5px] bg-[#62a21f] text-white cursor-pointer rounded-[8px] hover:bg-[#548b1a]'
-              onClick={() => signOut() as unknown as React.MouseEventHandler<HTMLButtonElement>}>
-              <Image src='/log.png' alt="logout" title='logout' width='35' height='35' className='headerImage' />
-            </button>
+            <Link
+              className='p-[5px] bg-[#62a21f] text-white cursor-pointer rounded-[8px] px-[10px] py-[7px] hover:bg-[#548b1a]'
+              title='Click to visit your account'
+              href='/dashboard'>
+              <Image src='/user.png' width={24} height={24} alt={session?.data?.user?.name || 'Profile'} className='reverseVector' />
+            </Link>
           </div>
           : <>
             <Link

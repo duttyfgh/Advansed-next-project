@@ -69,7 +69,7 @@
 .email input::placeholder,
 .password input::placeholder,
 .login input::placeholder {
-    color: #b2bda7;
+    color: #9191918e;
 }
 
 .email input:focus,
@@ -193,4 +193,3 @@
     }
 
 }
-

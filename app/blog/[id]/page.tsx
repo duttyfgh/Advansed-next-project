@@ -1,5 +1,6 @@
 import { post } from '@/modules/modules'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import cls from './id.module.css'
 
@@ -33,6 +34,9 @@ const BlogID = async ({ params }: IBlogIDProps) => {
   return (
     <main className={cls.main}>
       <div className='w-[100%]'>
+        <Link href='/blog'>
+          <Image src='/arrow.png' width={40} height={30} alt='<--' title='<- Come back' className={`${cls.arrow} defaultVector`} />
+        </Link>
         <span className={cls.title}>{data.title}</span>
         <p className={cls.description}>{data.desc}</p>
 

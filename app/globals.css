@@ -120,6 +120,27 @@ a {
   filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(30%) hue-rotate(195deg) brightness(106%) contrast(101%);
 }
 
+.reverseVector {
+  filter: brightness(0) saturate(100%);
+}
+
+.light .reverseVector {
+  
+}
+
+.whiteVector {
+  filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(30%) hue-rotate(195deg) brightness(106%) contrast(101%);
+
+}
+
+.default {
+  background-color: #080808;
+}
+
+.light .default {
+  background-color: white;
+}
+
 /* Скрыть фон скроллбара и установить цвет бордера и бара */
 ::-webkit-scrollbar {
   width: 8px;

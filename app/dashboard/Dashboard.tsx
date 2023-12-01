@@ -1,22 +1,31 @@
 'use client'
 import { Data } from '@/modules/modules'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import useSWR from 'swr'
 import Loading from '../blog/loading'
 import styles from './dashboard.module.css'
+import { Form, Formik } from 'formik'
+import * as Yup from 'yup'
+import InputField, { TextareaField } from '@/utils/InputField/InputField'
+
 
 const Dashboard = () => {
   const session = useSession()
   const router = useRouter()
 
-  //inputs values
-  const [title, setTitle] = useState<string>('')
-  const [desc, setDesc] = useState<string>('')
-  const [img, setImg] = useState<string>('')
-  const [content, setContent] = useState<string>('')
+  const [modalWindow, setModalWindow] = useState<boolean>(false)
+
+  const openModalWindow = () => {
+    setModalWindow(true)
+  }
+
+  const closeModalWindow = () => {
+    setModalWindow(false)
+  }
 
   const fetcher = async <T = Data>(...args: Parameters<typeof fetch>) => {
     const res = await fetch(...args)
@@ -35,26 +44,20 @@ const Dashboard = () => {
     router?.push("/dashboard/login")
   }
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-
+  const handleSubmit = async (value: IValues) => {
     try {
-
       await fetch('/api/posts', {
         method: "POST",
         body: JSON.stringify({
-          title,
-          desc,
-          img,
-          content,
+          title: value.Title,
+          desc: value.Description,
+          img: value.Image,
+          content: value.Content,
           username: session?.data?.user?.name || 'nn',
         }),
       })
       mutate()
-      setTitle('')
-      setDesc('')
-      setImg('')
-      setContent('')
+      closeModalWindow()
     } catch (error) {
       console.log(error)
     }
@@ -72,102 +75,156 @@ const Dashboard = () => {
     }
   }
 
-  //onChange handlers
-  const titleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value)
+  interface IValues {
+    Title: string
+    Image: string
+    Description: string
+    Content: string
   }
 
-  const imgOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setImg(e.target.value)
-  }
+  const Schema = Yup.object().shape({
+    Title: Yup.string()
+      .required('Title required field!'),
 
-  const descOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setDesc(e.target.value)
-  }
+    Image: Yup.string()
+      .required('Image required field!')
+      .url('This should be a link!'),
 
-  const contentOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(e.target.value)
-  }
+    Description: Yup.string()
+      .required('Description required field!'),
+    Content: Yup.string()
+      .required('Content required field!')
+  })
+
+
 
   if (session.status == "authenticated") {
     return (
-      <div className='flex w-screen h-screen items-center justify-between'>
+      <div className='flex h-screen items-center justify-center flex-col'>
         <p className='text-red-600'>{error}</p>
         <div className={styles.posts}>
           {data?.length !== undefined && data.length === 0 &&
             <span className=' flex justify-center items-center w-[1000px] text-[26px]'>No items.</span>}
           {isLoading ? <Loading /> : data?.map((post) => (
-            <div className='flex justify-between items-center border w-[850px] rounded mb-[5px] overflow-hidden' key={post._id}>
-              <Image src={post.img} alt={post.title} width={200} height={100} />
-              <div className='flex flex-col ml-[20px] mr-[20px]'>
-                <h2 className='font-bold text-[18px]'>{post.title}</h2>
-                <p className='mt-[30px]'>{post.desc}</p>
+            <div className={styles.card} key={post._id}>
+              <Image src={post.img} alt={post.title} width={200} height={100} className={styles.img} />
+              <div className={styles.cardTextBlock}>
+                <h2 className={styles.title}>{post.title}</h2>
+                <p className={styles.desc}>{post.desc}</p>
               </div>
               <div className={styles.delete} title={`Delete post "${post.title}"`} onClick={() => handleDelete(post._id)}>
-                <Image src='/Xmark.png' height={50} width={50} alt='X' />
+                <Image src='/Xmark.png' height={40} width={40} alt='X' />
               </div>
             </div>
           ))}
         </div>
 
-        <form className={styles.new} onSubmit={handleSubmit}>
-          <h1 className='font-bold text-[30px] mb-[20px]'>Add New Post</h1>
-          <div>
-            <p className='font-bold text-[20px]'>Title</p>
-            <input
-              type="text"
-              placeholder="required"
-              className={styles.input}
-              value={title}
-              onChange={titleOnChange}
-              maxLength={50}
-              required
-            />
-            <p className={styles.counter}>{title.length}/50</p>
+        <div className={styles.buttons}>
+          <div
+            title='Click to add new post'
+            className='bg-[#62a21f] hover:bg-[#5c9420] px-[20px] py-[10px] rounded-[8px] flex gap-[10px] items-center cursor-pointer'
+            onClick={openModalWindow}>
+            <span className='text-white text-[18px]'>Create new post</span>
+            <Image src='/plus.png' width={20} height={10} alt='+' className='whiteVector h-[19px]' />
           </div>
+          <button 
+            title='Click to add new post'
+            className='bg-[#62a21f] hover:bg-[#5c9420] px-[20px] py-[10px] rounded-[8px] flex gap-[10px] items-center cursor-pointer justify-evenly'
+            onClick={() => signOut() as unknown as React.MouseEventHandler<HTMLButtonElement>}>
+            <span className='text-white text-[18px]'>Login out</span>
+            <Image src='/log.png' width={30} height={30} alt='->]' className='whiteVector' />
+          </button>
+        </div>
 
-          <div>
-            <p className='font-bold text-[20px]'>Image</p>
-            <input
-              type="text"
-              placeholder="required"
-              className={styles.input}
-              value={img}
-              onChange={imgOnChange}
-              required
-            />
+        {modalWindow && <div className={styles.modelWindow}>
+          <div className={`${styles.new} default`}>
+            <h1 className='font-bold text-[30px] mb-[20px]'>Add New Post</h1>
+            <Formik
+              initialValues={{
+                Title: '',
+                Image: '',
+                Description: '',
+                Content: ''
+              }}
+              validationSchema={Schema}
+              onSubmit={handleSubmit}
+              validateOnChange={false}
+            >
+              {({ values, errors, touched, handleChange }) => (
+                <Form >
+                  <div className={styles.titleInput}>
+                    <InputField
+                      text={'Title'}
+                      error={errors.Title as string}
+                      touched={touched.Title as boolean}
+                      type={'text'}
+                      placeholder={'Enter title...'}
+                      name={'Title'}
+                      onChange={handleChange}
+                      value={values.Title}
+                      title='Enter title for your post'
+                      maxLength={50}
+                    />
+                    <p className='w-[100%] text-end'>{values.Title.length}/50</p>
+                  </div>
+                  <div className={styles.image}>
+                    <InputField
+                      text={'Image'}
+                      error={errors.Image as string}
+                      touched={touched.Image as boolean}
+                      type={'text'}
+                      placeholder={'Enter img url...'}
+                      name={'Image'}
+                      onChange={handleChange}
+                      value={values.Image}
+                      title='Enter url on your img'
+                    />
+                  </div>
+                  <div className={styles.description}>
+                    <InputField
+                      text={'Description'}
+                      error={errors.Description as string}
+                      touched={touched.Description as boolean}
+                      type={'text'}
+                      placeholder={'Enter description...'}
+                      name={'Description'}
+                      onChange={handleChange}
+                      value={values.Description}
+                      title='Enter description for your post'
+                      maxLength={100}
+                    />
+                    <p className='w-[100%] text-end'>{values.Description.length}/100</p>
+
+                  </div>
+                  <div className={styles.content}>
+                    <TextareaField
+                      text={'Content'}
+                      error={errors.Content as string}
+                      touched={touched.Content as boolean}
+                      placeholder={'Enter content...'}
+                      name={'Content'}
+                      onChange={handleChange}
+                      value={values.Content}
+                      title='Enter main text for your post'
+                      maxLength={500}
+                    />
+                    <p className='w-[100%] text-end'>{values.Content.length}/500</p>
+                  </div>
+                  <button
+                    className='w-[100%] bg-[#62a21f] hover:bg-[#5c9420] h-[40px] rounded text-white text-[18px] transition-all'
+                    title='Click to create the post'
+                  >Add</button>
+                </Form>
+              )}
+            </Formik>
+            <button
+              className={styles.cancel}
+              onClick={closeModalWindow}
+              title='Click to cancel'
+            >Cancel</button>
           </div>
-
-          <div>
-            <p className='font-bold text-[20px]'>Description</p>
-            <textarea
-              placeholder="required"
-              className={styles.inputDesc}
-              value={desc}
-              onChange={descOnChange}
-              maxLength={100}
-              required
-            />
-            <p className={styles.counter}>{desc.length}/100</p>
-          </div>
-
-          <div>
-            <p className='font-bold text-[20px]'>Content</p>
-            <textarea
-              placeholder='required'
-              className={styles.textArea}
-              value={content}
-              onChange={contentOnChange}
-              maxLength={500}
-              required
-            />
-            <p className={styles.counter}>{content.length}/500</p>
-          </div>
-
-          <button className='w-[340px] bg-[#62a21f] hover:bg-[#5c9420] h-[40px] rounded text-white text-[18px] transition-all'
-          >Add</button>
-        </form>
-
+        </div>
+        }
 
       </div>
     )
