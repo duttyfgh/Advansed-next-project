@@ -1,8 +1,6 @@
 .posts {
-    /* margin-left: -80px; */
     overflow-y: scroll;
     max-height: 450px;
-    margin-top: -200px;
 }
 
 .posts::-webkit-scrollbar-thumb {

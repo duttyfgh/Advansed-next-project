@@ -11,7 +11,7 @@ import styles from './dashboard.module.css'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import InputField, { TextareaField } from '@/utils/InputField/InputField'
-
+import capitalizeFirstLetter from '@/utils/capitalizeFirstLatter'
 
 const Dashboard = () => {
   const session = useSession()
@@ -100,7 +100,11 @@ const Dashboard = () => {
 
   if (session.status == "authenticated") {
     return (
-      <div className='flex h-screen items-center justify-center flex-col'>
+      <div className='flex h-screen items-center flex-col mt-[40px]'>
+        <div className='max-w-[850px] w-[100%] mb-[40px] flex gap-[10px] items-end'>
+          <Image src='/user.png' width={30} height={24} alt='...' className='defaultVector' />
+          <span className='relative font-bold text-[22px] mb-[-7px]'>{session?.data?.user?.name}</span>
+        </div>
         <p className='text-red-600'>{error}</p>
         <div className={styles.posts}>
           {data?.length !== undefined && data.length === 0 &&
@@ -110,7 +114,7 @@ const Dashboard = () => {
               <Image src={post.img} alt={post.title} width={200} height={100} className={styles.img} />
               <div className={styles.cardTextBlock}>
                 <h2 className={styles.title}>{post.title}</h2>
-                <p className={styles.desc}>{post.desc}</p>
+                <p className={styles.desc}>{capitalizeFirstLetter(post.desc)}</p>
               </div>
               <div className={styles.delete} title={`Delete post "${post.title}"`} onClick={() => handleDelete(post._id)}>
                 <Image src='/Xmark.png' height={40} width={40} alt='X' />
@@ -127,7 +131,7 @@ const Dashboard = () => {
             <span className='text-white text-[18px]'>Create new post</span>
             <Image src='/plus.png' width={20} height={10} alt='+' className='whiteVector h-[19px]' />
           </div>
-          <button 
+          <button
             title='Click to add new post'
             className='bg-[#62a21f] hover:bg-[#5c9420] px-[20px] py-[10px] rounded-[8px] flex gap-[10px] items-center cursor-pointer justify-evenly'
             onClick={() => signOut() as unknown as React.MouseEventHandler<HTMLButtonElement>}>
